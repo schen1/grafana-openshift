@@ -1,0 +1,30 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      prometheus.io/scheme: https
+      prometheus.io/scrape: "true"
+    creationTimestamp: 2019-05-03T07:48:59Z
+    labels:
+      metrics-infra: grafana
+      name: grafana
+    name: grafana
+    namespace: grafana
+  spec:
+    ports:
+    - name: grafana
+      port: 443
+      protocol: TCP
+      targetPort: 3000
+    selector:
+      app: grafana
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""

@@ -1,0 +1,14 @@
+apiVersion: v1
+imagePullSecrets:
+- name: grafana-ocp-dockercfg-l5k7k
+kind: ServiceAccount
+metadata:
+  annotations:
+    openshift.io/generated-by: OpenShiftNewApp
+    serviceaccounts.openshift.io/oauth-redirectreference.primary: '{"kind":"OAuthRedirectReference","apiVersion":"v1","reference":{"kind":"Route","name":"grafana-ocp"}}'
+  creationTimestamp: null
+  name: grafana-ocp
+  selfLink: /api/v1/namespaces/grafana/serviceaccounts/grafana-ocp
+secrets:
+- name: grafana-ocp-dockercfg-l5k7k
+- name: grafana-ocp-token-ww2bw
