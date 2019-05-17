@@ -50,9 +50,9 @@ spec:
         volumeMounts:
         - mountPath: /usr/share/grafana/data
           name: gf-data
-        - mountPath: /etc/grafana/config.ini
+        - mountPath: /usr/share/grafana/conf/defaults.ini
           name: gfconfig
-          subPath: config.ini
+          subPath: defaults.ini
         - mountPath: /etc/grafana/provisioning/dashboards
           name: dashboards
           readOnly: true

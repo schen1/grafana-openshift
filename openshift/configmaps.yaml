@@ -34,7 +34,7 @@ items:
     namespace: grafana
 - apiVersion: v1
   data:
-    config.ini: |-
+    defaults.ini: |-
       # possible values : production, development
       app_mode = production
 
@@ -221,19 +221,19 @@ items:
       #################################### Users ####################################
       [users]
       # disable user signup / registration
-      allow_sign_up = true
+      allow_sign_up = false
 
       # Allow non admin users to create organizations
-      allow_org_create = true
+      #allow_org_create = false
 
       # Set to true to automatically assign new users to the default organization (id 1)
-      auto_assign_org = true
+      #auto_assign_org = false
 
       # Default role new users will be automatically assigned (if auto_assign_org above is set to true)
-      auto_assign_org_role = Admin
+      #auto_assign_org_role = Admin
 
       # Require email validation before sign up completes
-      verify_email_enabled = false
+      #verify_email_enabled = false
 
       # Background text for the user field on the login page
       login_hint = email or username
@@ -248,98 +248,28 @@ items:
 
       [auth]
       # Set to true to disable (hide) the login form, useful if you use OAuth
-      disable_login_form = true
+      #disable_login_form = true
 
       # Set to true to disable the signout link in the side menu. useful if you use auth.proxy
-      disable_signout_menu = true
+      #disable_signout_menu = true
 
       #################################### Anonymous Auth ######################
       [auth.anonymous]
       # enable anonymous access
-      enabled = true
+      #enabled = true
 
       # specify organization name that should be used for unauthenticated users
-      org_name = Main Org.
+      #org_name = Main Org.
 
       # specify role for unauthenticated users
-      org_role = Admin
+      #org_role = Admin
 
-      #################################### Github Auth #########################
-      [auth.github]
-      enabled = false
-      allow_sign_up = true
-      client_id = some_id
-      client_secret = some_secret
-      scopes = user:email
-      auth_url = https://github.com/login/oauth/authorize
-      token_url = https://github.com/login/oauth/access_token
-      api_url = https://api.github.com/user
-      team_ids =
-      allowed_organizations =
-
-      #################################### Google Auth #########################
-      [auth.google]
-      enabled = false
-      allow_sign_up = true
-      client_id = some_client_id
-      client_secret = some_client_secret
-      scopes = https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email
-      auth_url = https://accounts.google.com/o/oauth2/auth
-      token_url = https://accounts.google.com/o/oauth2/token
-      api_url = https://www.googleapis.com/oauth2/v1/userinfo
-      allowed_domains =
-      hosted_domain =
-
-      #################################### Grafana.com Auth ####################
-      # legacy key names (so they work in env variables)
-      [auth.grafananet]
-      enabled = false
-      allow_sign_up = true
-      client_id = some_id
-      client_secret = some_secret
-      scopes = user:email
-      allowed_organizations =
-
-      [auth.grafana_com]
-      enabled = false
-      allow_sign_up = true
-      client_id = some_id
-      client_secret = some_secret
-      scopes = user:email
-      allowed_organizations =
-
-      #################################### Generic OAuth #######################
-      [auth.generic_oauth]
-      name = OAuth
-      enabled = false
-      allow_sign_up = true
-      client_id = some_id
-      client_secret = some_secret
-      scopes = user:email
-      auth_url =
-      token_url =
-      api_url =
-      team_ids =
-      allowed_organizations =
-
-      #################################### Basic Auth ##########################
-      [auth.basic]
-      enabled = false
-
-      #################################### Auth Proxy ##########################
-      [auth.proxy]
-      enabled = true
-      header_name = X-WEBAUTH-USER
-      header_property = username
-      auto_sign_up = true
-      ldap_sync_ttl = 60
-      whitelist =
 
       #################################### Auth LDAP ###########################
       [auth.ldap]
       enabled = false
       config_file = /etc/grafana/ldap.toml
-      allow_sign_up = true
+      allow_sign_up = false
 
       #################################### SMTP / Emailing #####################
       [smtp]
@@ -434,7 +364,7 @@ items:
 
       #### set quotas to -1 to make unlimited. ####
       # limit number of users per Org.
-      org_user = 10
+      #org_user = 10
 
       # limit number of dashboards per Org.
       org_dashboard = 100
@@ -529,9 +459,6 @@ items:
       bucket =
   kind: ConfigMap
   metadata:
-    annotations:
-      openshift.io/generated-by: OpenShiftNewApp
-    creationTimestamp: 2019-04-03T14:50:20Z
     name: gf-config
     namespace: grafana
     resourceVersion: "17161349"
